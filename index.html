@@ -2,113 +2,116 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Pace Calculator</title>
 		<link href="style.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div>
-			Use the radio buttons to select which quantity to compute from the other two.
-		</div>
-		<div id="container">
-			<label class="compute-radio" for="compute-duration"
-				><input type="radio" name="computed" id="compute-duration" />Duration:</label
-			>
-			<div class="row">
-				<div class="datum">
-					<input
-						class="numeric-input two-digits"
-						id="duration-hours"
-						name="duration-hours"
-						min="0"
-						placeholder="0"
-					/>
-					<label class="label-post" for="duration-hours">hours</label>
-				</div>
-				<div class="datum">
-					<input
-						class="numeric-input two-digits"
-						id="duration-minutes"
-						name="duration-minutes"
-						min="0"
-						placeholder="0"
-					/>
-					<label class="label-post" for="duration-minutes">minutes</label>
-				</div>
-				<div class="datum">
-					<input
-						class="numeric-input three-digits"
-						id="duration-seconds"
-						name="duration-seconds"
-						min="0"
-						placeholder="0"
-					/>
-					<label class="label-post" for="duration-seconds">seconds</label>
-				</div>
+		<div id="main">
+			<div id="lead">
+				Use the radio buttons to select which quantity to compute from the other two.
 			</div>
-			<label class="compute-radio" for="compute-distance">
-				<input type="radio" name="computed" id="compute-distance" />Distance:</label
-			>
-			<div class="row">
-				<div class="datum">
-					<input
-						class="numeric-input input-wide"
-						id="distance"
-						name="distance"
-						min="0"
-						placeholder="0"
-						aria-label="Distance"
-					/>
-				</div>
-				<div class="datum">
-					<select id="units" name="units">
-						<optgroup label="Imperial">
-							<option value="mi">miles</option>
-						</optgroup>
-						<optgroup label="Metric">
-							<option value="km">kilometers</option>
-							<option value="m">meters</option>
-						</optgroup>
-					</select>
-				</div>
-			</div>
-			<label class="compute-radio" for="compute-pace">
-				<input type="radio" name="computed" id="compute-pace" checked />Pace:</label
-			>
-			<div class="row">
-				<div class="datum">
-					<input
-						class="numeric-input two-digits"
-						id="pace-minutes"
-						name="pace-minutes"
-						min="0"
-						placeholder="0"
-						disabled
-					/>
-					<label class="label-post" for="pace-minutes">minutes</label>
-				</div>
-				<div class="datum">
-					<input
-						class="numeric-input three-digits"
-						id="pace-seconds"
-						name="pace-seconds"
-						min="0"
-						max="60"
-						placeholder="0"
-						disabled
-					/>
-					<label class="label-post" for="pace-seconds">seconds</label>
-				</div>
-				<div class="datum">
-					<label for="pace-units">per</label>
+			<div id="container">
+				<label class="compute-radio" for="compute-duration"
+					><input type="radio" name="computed" id="compute-duration" />Duration:</label
+				>
+				<div class="row">
 					<div class="datum">
-						<select id="pace-units" name="pace-units">
+						<input
+							class="numeric-input two-digits"
+							id="duration-hours"
+							name="duration-hours"
+							min="0"
+							placeholder="0"
+						/>
+						<label class="label-post" for="duration-hours">hours</label>
+					</div>
+					<div class="datum">
+						<input
+							class="numeric-input two-digits"
+							id="duration-minutes"
+							name="duration-minutes"
+							min="0"
+							placeholder="0"
+						/>
+						<label class="label-post" for="duration-minutes">minutes</label>
+					</div>
+					<div class="datum">
+						<input
+							class="numeric-input three-digits"
+							id="duration-seconds"
+							name="duration-seconds"
+							min="0"
+							placeholder="0"
+						/>
+						<label class="label-post" for="duration-seconds">seconds</label>
+					</div>
+				</div>
+				<label class="compute-radio" for="compute-distance">
+					<input type="radio" name="computed" id="compute-distance" />Distance:</label
+				>
+				<div class="row">
+					<div class="datum">
+						<input
+							class="numeric-input input-wide"
+							id="distance"
+							name="distance"
+							min="0"
+							placeholder="0"
+							aria-label="Distance"
+						/>
+					</div>
+					<div class="datum">
+						<select id="units" name="units">
 							<optgroup label="Imperial">
-								<option value="mi">mile</option>
+								<option value="mi">miles</option>
 							</optgroup>
 							<optgroup label="Metric">
-								<option value="km">kilometer</option>
+								<option value="km">kilometers</option>
+								<option value="m">meters</option>
 							</optgroup>
 						</select>
+					</div>
+				</div>
+				<label class="compute-radio" for="compute-pace">
+					<input type="radio" name="computed" id="compute-pace" checked />Pace:</label
+				>
+				<div class="row">
+					<div class="datum">
+						<input
+							class="numeric-input two-digits"
+							id="pace-minutes"
+							name="pace-minutes"
+							min="0"
+							placeholder="0"
+							disabled
+						/>
+						<label class="label-post" for="pace-minutes">minutes</label>
+					</div>
+					<div class="datum">
+						<input
+							class="numeric-input three-digits"
+							id="pace-seconds"
+							name="pace-seconds"
+							min="0"
+							max="60"
+							placeholder="0"
+							disabled
+						/>
+						<label class="label-post" for="pace-seconds">seconds</label>
+					</div>
+					<div class="datum">
+						<label for="pace-units">per</label>
+						<div class="datum">
+							<select id="pace-units" name="pace-units">
+								<optgroup label="Imperial">
+									<option value="mi">mile</option>
+								</optgroup>
+								<optgroup label="Metric">
+									<option value="km">kilometer</option>
+								</optgroup>
+							</select>
+						</div>
 					</div>
 				</div>
 			</div>

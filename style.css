@@ -1,11 +1,11 @@
 :root {
-	--font-size: 20px;
+	--font-size: 24px;
 }
 
 body {
-	margin-left: 10em;
 	margin-top: 2em;
 	font-size: var(--font-size);
+	text-align: center;
 }
 
 body,
@@ -23,13 +23,44 @@ input {
 	font-family: monospace;
 }
 
+#main {
+	display: inline-block;
+	margin: 0 3vw;
+	text-align: left;
+}
+
+#lead {
+	display: block;
+	text-wrap: auto;
+}
+
 #container {
+	width: max-content;
 	margin-top: 1em;
 	display: grid;
 	grid-template-columns: max-content 1fr;
 	column-gap: 2em;
 	row-gap: 0.2em;
-	align-items: center;
+	align-items: start;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+@media screen and (max-width: 720px) {
+	:root {
+		--font-size: 18px;
+	}
+
+	#container {
+		row-gap: 1em;
+	}
+
+	.row {
+		flex-direction: column;
+	}
 }
 
 .compute-radio {

@@ -132,6 +132,9 @@
 	for (const id of ALL_INPUT_IDS) {
 		const input = document.getElementById(id);
 		input.oninput = updateInput;
+		if (input.classList.contains("numeric-input")) {
+			input.setAttribute("inputmode", "decimal");
+		}
 		INPUTS[id] = input;
 
 		setValue(id);
