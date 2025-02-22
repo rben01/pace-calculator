@@ -35,6 +35,7 @@ import Main from "../components/Main.astro";
 		--variable-flex-direction: row;
 		--variable-flex-align-items: center;
 		--variable-multiple-flex-direction: column;
+		--variable-multiple-row-gap: 0.3em;
 		--select-margin-left: 0.2em;
 		--time-not-seconds-max-width: 2em;
 		--time-seconds-max-width: 2.75em;
@@ -53,8 +54,16 @@ import Main from "../components/Main.astro";
 		}
 	}
 
+	@media screen and (max-width: 400px) {
+		:root {
+			--variable-multiple-flex-direction: column;
+			--variable-multiple-row-gap: 1.4em;
+		}
+	}
+
 	body {
 		margin-top: 2em;
+		margin-bottom: 4em;
 		font-family: var(--font-family);
 		font-size: var(--font-size);
 		text-align: center;
