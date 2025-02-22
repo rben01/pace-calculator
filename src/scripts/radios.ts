@@ -1,6 +1,7 @@
 import {
 	ALL_INPUT_IDS,
 	DIST_IDS,
+	type DistUnitId,
 	DUR_IDS,
 	type InputId,
 	PACE_IDS,
@@ -9,6 +10,7 @@ import {
 	RADIO_IDS,
 	RADIO_PACE,
 	type RadioId,
+	SPEED_IDS,
 	UNIT_IDS,
 	type UnitId,
 } from "./elem-ids";
@@ -21,7 +23,7 @@ export const RADIOS = {} as { [key in RadioId]: HTMLInputElement };
 for (const [radioId, inputIds] of [
 	[RADIO_DUR, DUR_IDS],
 	[RADIO_DIST, DIST_IDS],
-	[RADIO_PACE, PACE_IDS],
+	[RADIO_PACE, [...PACE_IDS, ...SPEED_IDS]],
 ] as const) {
 	for (const inputId of inputIds) {
 		INPUT_TO_RADIO[inputId] = radioId;
@@ -30,7 +32,7 @@ for (const [radioId, inputIds] of [
 	const radio = document.getElementById(radioId)! as HTMLInputElement;
 	radio.addEventListener("click", function (this: HTMLInputElement) {
 		for (const inputId of ALL_INPUT_IDS) {
-			if (UNIT_IDS.has(inputId as UnitId)) {
+			if (UNIT_IDS.includes(inputId as UnitId)) {
 				continue;
 			}
 

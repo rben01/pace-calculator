@@ -11,11 +11,14 @@ import {
 	RADIO_DIST,
 	RADIO_DUR,
 	RADIO_PACE,
+	SPEED_QTY,
+	SPEED_UNIT,
 } from "../scripts/elem-ids";
 
 import Dropdown from "./Dropdown.astro";
 import NumericInput from "./numeric-input/NumericInput.astro";
 import VariableData from "./VariableData.astro";
+import VariableDataMultiple from "./VariableDataMultiple.astro";
 import VariableSelector from "./VariableSelector.astro";
 ---
 
@@ -50,27 +53,47 @@ import VariableSelector from "./VariableSelector.astro";
 			</Dropdown>
 		</VariableData>
 
-		<VariableSelector label="Pace" id={RADIO_PACE} />
-		<VariableData>
-			<NumericInput label="minutes" id={PACE_MIN} designation="timeNotSeconds" />
-			<NumericInput
-				label="seconds"
-				id={PACE_SEC}
-				designation="timeSeconds"
-				noRightMargin={true}
-			/>
-			<div>
-				<span id="pace-per">per</span>
-				<Dropdown id={PACE_UNIT} ariaLabel="Pace units">
+		<VariableSelector label="Pace/speed" id={RADIO_PACE} />
+		<VariableDataMultiple>
+			<VariableData>
+				<NumericInput label="minutes" id={PACE_MIN} designation="timeNotSeconds" />
+				<NumericInput
+					label="seconds"
+					id={PACE_SEC}
+					designation="timeSeconds"
+					noRightMargin={true}
+				/>
+				<div id="pace-data">
+					<span>per</span>
+					<Dropdown id={PACE_UNIT} ariaLabel="Pace units">
+						<optgroup label="Imperial">
+							<option value="mi">mile</option>
+						</optgroup>
+						<optgroup label="Metric">
+							<option value="km">kilometer</option>
+						</optgroup>
+					</Dropdown>
+				</div>
+			</VariableData>
+			<VariableData>
+				<NumericInput
+					label=""
+					id={SPEED_QTY}
+					designation="distance"
+					ariaLabel="speed"
+				/>
+				<Dropdown id={SPEED_UNIT} ariaLabel="Speed units">
 					<optgroup label="Imperial">
-						<option value="mi">mile</option>
+						<option value="mi-per-hr">mph</option>
+						<option value="feet-per-sec">feet/s</option>
 					</optgroup>
 					<optgroup label="Metric">
-						<option value="km">kilometer</option>
+						<option value="km-per-hr">km/h</option>
+						<option value="meter-per-sec">m/s</option>
 					</optgroup>
 				</Dropdown>
-			</div>
-		</VariableData>
+			</VariableData>
+		</VariableDataMultiple>
 	</div>
 </div>
 
@@ -91,9 +114,22 @@ import VariableSelector from "./VariableSelector.astro";
 		margin-top: 1em;
 		display: grid;
 		grid-template-columns: max-content 1fr;
-		column-gap: 2em;
+		column-gap: var(--container-column-gap);
 		row-gap: var(--container-row-gap);
 		align-items: start;
+	}
+
+	#pace-data {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: baseline;
+
+		select {
+			margin-left: 0.8ex;
+		}
+	}
+
+	#pace-speed {
 	}
 </style>
 

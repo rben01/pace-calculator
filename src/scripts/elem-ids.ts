@@ -7,6 +7,8 @@ export const DIST_UNIT = "distance-units";
 export const PACE_MIN = "pace-minutes";
 export const PACE_SEC = "pace-seconds";
 export const PACE_UNIT = "pace-units";
+export const SPEED_QTY = "speed-qty";
+export const SPEED_UNIT = "speed-units";
 
 // radio button IDs
 export const RADIO_DUR = "radio-duration";
@@ -20,12 +22,23 @@ export type RadioId = (typeof RADIO_IDS)[number];
 export const DUR_IDS = [DUR_HR, DUR_MIN, DUR_SEC] as const;
 export const DIST_IDS = [DIST_QTY, DIST_UNIT] as const;
 export const PACE_IDS = [PACE_MIN, PACE_SEC, PACE_UNIT] as const;
+export const SPEED_IDS = [SPEED_QTY, SPEED_UNIT] as const;
 
 // the dropdown unit selectors
-const _UNIT_IDS_ARR = [DIST_UNIT, PACE_UNIT] as const;
-export const UNIT_IDS = new Set(_UNIT_IDS_ARR);
-export type UnitId = (typeof _UNIT_IDS_ARR)[number];
+export const DIST_UNIT_IDS = [DIST_UNIT, PACE_UNIT] as const;
+export type DistUnitId = (typeof DIST_UNIT_IDS)[number];
+
+export const SPEED_UNIT_IDS = [SPEED_UNIT] as const;
+export type SpeedUnitId = (typeof SPEED_UNIT_IDS)[number];
+
+export const UNIT_IDS = [...DIST_UNIT_IDS, ...SPEED_UNIT_IDS];
+export type UnitId = (typeof UNIT_IDS)[number];
 
 // everything
-export const ALL_INPUT_IDS = [...DUR_IDS, ...DIST_IDS, ...PACE_IDS] as const;
+export const ALL_INPUT_IDS = [
+	...DUR_IDS,
+	...DIST_IDS,
+	...PACE_IDS,
+	...SPEED_IDS,
+] as const;
 export type InputId = (typeof ALL_INPUT_IDS)[number];
