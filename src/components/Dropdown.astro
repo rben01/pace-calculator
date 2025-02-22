@@ -1,9 +1,9 @@
 ---
-type Props = { id: string };
-const { id } = Astro.props;
+type Props = { id: string; ariaLabel?: string };
+const { id, ariaLabel = undefined } = Astro.props;
 ---
 
-<select {id} name={id}><slot /></select>
+<select {id} name={id} aria-label={ariaLabel}><slot /></select>
 
 <style>
 	select {

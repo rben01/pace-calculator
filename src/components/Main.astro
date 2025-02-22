@@ -39,7 +39,7 @@ import VariableSelector from "./VariableSelector.astro";
 				designation="distance"
 				ariaLabel="Distance"
 			/>
-			<Dropdown id={DIST_UNIT}>
+			<Dropdown id={DIST_UNIT} ariaLabel="Distance units">
 				<optgroup label="Imperial">
 					<option value="mi">miles</option>
 				</optgroup>
@@ -61,7 +61,7 @@ import VariableSelector from "./VariableSelector.astro";
 			/>
 			<div>
 				<span id="pace-per">per</span>
-				<Dropdown id={PACE_UNIT}>
+				<Dropdown id={PACE_UNIT} ariaLabel="Pace units">
 					<optgroup label="Imperial">
 						<option value="mi">mile</option>
 					</optgroup>
