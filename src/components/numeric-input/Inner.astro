@@ -1,0 +1,38 @@
+---
+export type Designation = "timeNotSeconds" | "timeSeconds" | "distance";
+export type Props = {
+	id: string;
+	designation: Designation;
+	ariaLabel?: string;
+};
+
+const { id: htmlName, designation, ariaLabel } = Astro.props;
+
+let inputWidth;
+switch (designation) {
+	case "timeNotSeconds":
+		inputWidth = "2em";
+		break;
+	case "timeSeconds":
+		inputWidth = "2.75em";
+		break;
+	case "distance":
+		inputWidth = "4em";
+		break;
+	default:
+		return designation satisfies never;
+}
+---
+
+<input id={htmlName} name={htmlName} min="0" placeholder="0" aria-label={ariaLabel} />
+
+<style define:vars={{ inputWidth }}>
+	input {
+		font-size: 0.8em;
+		font-family: monospace;
+		display: inline-block;
+		text-align: right;
+		margin-right: 0.2em;
+		max-width: var(--inputWidth);
+	}
+</style>

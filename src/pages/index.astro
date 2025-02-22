@@ -1,5 +1,6 @@
 ---
-
+import Main from "../components/Main.astro";
+import { fontFamily, fontSize } from "../styles/css-variables";
 ---
 
 <html lang="en">
@@ -8,9 +9,18 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Pace Calculator</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<Main />
 	</body>
 </html>
+
+<style define:vars={{ fontFamily, fontSize }}>
+	body {
+		margin-top: 2em;
+		font-family: var(--fontFamily);
+		font-size: var(--fontSize);
+		text-align: center;
+	}
+</style>

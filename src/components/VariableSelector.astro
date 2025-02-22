@@ -1,0 +1,21 @@
+---
+const { label, id, checked = false } = Astro.props;
+---
+
+<label for={id}
+	><input type="radio" name="variable-selector" {id} {checked} />{label}:</label
+>
+
+<style>
+	label {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	input {
+		margin-right: 1ex;
+	}
+</style>
+
+<script src="../scripts/radios.ts"></script>

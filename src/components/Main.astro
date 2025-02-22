@@ -1,0 +1,96 @@
+---
+import {
+	DIST_QTY,
+	DIST_UNIT,
+	DUR_HR,
+	DUR_MIN,
+	DUR_SEC,
+	PACE_MIN,
+	PACE_SEC,
+	PACE_UNIT,
+	RADIO_DIST,
+	RADIO_DUR,
+	RADIO_PACE,
+} from "../scripts/elem-ids";
+
+import Dropdown from "./Dropdown.astro";
+import NumericInput from "./numeric-input/NumericInput.astro";
+import VariableData from "./VariableData.astro";
+import VariableSelector from "./VariableSelector.astro";
+---
+
+<div id="main">
+	<div id="lead">
+		Use the radio buttons to select which quantity to compute from the other two.
+	</div>
+	<div id="container">
+		<VariableSelector label="Duration" id={RADIO_DUR} />
+		<VariableData>
+			<NumericInput label="hours" id={DUR_HR} designation="timeNotSeconds" />
+			<NumericInput label="minutes" id={DUR_MIN} designation="timeNotSeconds" />
+			<NumericInput label="seconds" id={DUR_SEC} designation="timeSeconds" />
+		</VariableData>
+
+		<VariableSelector label="Distance" id={RADIO_DIST} />
+		<VariableData>
+			<NumericInput
+				label=""
+				id={DIST_QTY}
+				designation="distance"
+				ariaLabel="Distance"
+			/>
+			<Dropdown id={DIST_UNIT}>
+				<optgroup label="Imperial">
+					<option value="mi">miles</option>
+				</optgroup>
+				<optgroup label="Metric">
+					<option value="km">kilometers</option>
+					<option value="m">meters</option>
+				</optgroup>
+			</Dropdown>
+		</VariableData>
+
+		<VariableSelector label="Pace" id={RADIO_PACE} checked={true} />
+		<VariableData>
+			<NumericInput label="minutes" id={PACE_MIN} designation="timeNotSeconds" />
+			<NumericInput
+				label="seconds"
+				id={PACE_SEC}
+				designation="timeSeconds"
+				noRightMargin={true}
+			/>
+			<div id="pace-per">per</div>
+			<Dropdown id={PACE_UNIT}>
+				<optgroup label="Imperial">
+					<option value="mi">mile</option>
+				</optgroup>
+				<optgroup label="Metric">
+					<option value="km">kilometer</option>
+				</optgroup>
+			</Dropdown>
+		</VariableData>
+	</div>
+</div>
+
+<style>
+	#main {
+		display: inline-block;
+		margin: 0 3vw;
+		text-align: left;
+	}
+
+	#lead {
+		display: block;
+		text-wrap: auto;
+	}
+
+	#container {
+		width: max-content;
+		margin-top: 1em;
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		column-gap: 2em;
+		row-gap: 0.2em;
+		align-items: start;
+	}
+</style>

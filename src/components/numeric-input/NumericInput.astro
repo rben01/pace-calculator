@@ -1,0 +1,33 @@
+---
+import Inner from "./Inner.astro";
+import type { Props as InnerProps } from "./Inner.astro";
+
+type Props = {
+	label: string;
+	noRightMargin?: boolean;
+} & InnerProps;
+
+let { label, id, noRightMargin = undefined, ...innerProps } = Astro.props;
+const marginClass = noRightMargin ? "no-right-margin" : null;
+---
+
+{
+	label ? (
+		<label class:list={[marginClass]} for={id}>
+			<Inner {id} {...innerProps} />
+			{label}
+		</label>
+	) : (
+		<Inner {id} {...innerProps} />
+	)
+}
+
+<style>
+	label {
+		margin-right: 0.8em;
+
+		&.no-right-margin {
+			margin-right: 0.8ex;
+		}
+	}
+</style>
