@@ -50,7 +50,7 @@ import VariableSelector from "./VariableSelector.astro";
 			</Dropdown>
 		</VariableData>
 
-		<VariableSelector label="Pace" id={RADIO_PACE} checked={true} />
+		<VariableSelector label="Pace" id={RADIO_PACE} />
 		<VariableData>
 			<NumericInput label="minutes" id={PACE_MIN} designation="timeNotSeconds" />
 			<NumericInput
@@ -59,20 +59,28 @@ import VariableSelector from "./VariableSelector.astro";
 				designation="timeSeconds"
 				noRightMargin={true}
 			/>
-			<div id="pace-per">per</div>
-			<Dropdown id={PACE_UNIT}>
-				<optgroup label="Imperial">
-					<option value="mi">mile</option>
-				</optgroup>
-				<optgroup label="Metric">
-					<option value="km">kilometer</option>
-				</optgroup>
-			</Dropdown>
+			<div>
+				<span id="pace-per">per</span>
+				<Dropdown id={PACE_UNIT}>
+					<optgroup label="Imperial">
+						<option value="mi">mile</option>
+					</optgroup>
+					<optgroup label="Metric">
+						<option value="km">kilometer</option>
+					</optgroup>
+				</Dropdown>
+			</div>
 		</VariableData>
 	</div>
 </div>
 
 <style>
+	:root {
+		--container-row-gap: 0.2em;
+		--variable-flex-direction: row;
+		--select-margin-left: 0.2em;
+	}
+
 	#main {
 		display: inline-block;
 		margin: 0 3vw;
@@ -90,7 +98,23 @@ import VariableSelector from "./VariableSelector.astro";
 		display: grid;
 		grid-template-columns: max-content 1fr;
 		column-gap: 2em;
-		row-gap: 0.2em;
+		row-gap: var(--container-row-gap);
 		align-items: start;
 	}
+
+	@media screen and (max-width: 720px) {
+		:root {
+			--font-size: 18px;
+
+			--container-row-gap: 1em;
+			--variable-flex-direction: column;
+			--select-margin-left: 0;
+		}
+	}
 </style>
+
+<script>
+	import { RADIO_PACE } from "../scripts/elem-ids";
+
+	document.getElementById(RADIO_PACE)!.click();
+</script>

@@ -1,15 +1,14 @@
 ---
-import { fontFamily } from "../styles/css-variables";
 type Props = { id: string };
 const { id } = Astro.props;
 ---
 
 <select {id} name={id}><slot /></select>
 
-<style define:vars={{ fontFamily }}>
+<style>
 	select {
 		font-size: 0.8em;
-		font-family: var(--fontFamily);
-		margin-left: 0.2em;
+		font-family: var(--font-family);
+		margin-left: var(--select-margin-left);
 	}
 </style>
