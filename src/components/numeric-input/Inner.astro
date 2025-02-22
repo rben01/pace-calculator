@@ -8,31 +8,49 @@ export type Props = {
 
 const { id: htmlName, designation, ariaLabel } = Astro.props;
 
-let inputWidth;
+let inputClass;
 switch (designation) {
 	case "timeNotSeconds":
-		inputWidth = "2em";
+		inputClass = "time-not-seconds";
 		break;
 	case "timeSeconds":
-		inputWidth = "2.75em";
+		inputClass = "time-seconds";
 		break;
 	case "distance":
-		inputWidth = "4em";
+		inputClass = "distance";
 		break;
 	default:
 		return designation satisfies never;
 }
 ---
 
-<input id={htmlName} name={htmlName} min="0" placeholder="0" aria-label={ariaLabel} />
+<input
+	id={htmlName}
+	class:list={[inputClass]}
+	name={htmlName}
+	min="0"
+	placeholder="0"
+	aria-label={ariaLabel}
+/>
 
-<style define:vars={{ inputWidth }}>
+<style>
 	input {
 		font-size: 0.8em;
 		font-family: monospace;
 		display: inline-block;
 		text-align: right;
 		margin-right: 0.2em;
-		max-width: var(--inputWidth);
+
+		&.time-not-seconds {
+			max-width: var(--time-not-seconds-max-width);
+		}
+
+		&.time-seconds {
+			max-width: var(--time-seconds-max-width);
+		}
+
+		&.distance {
+			max-width: 4em;
+		}
 	}
 </style>
