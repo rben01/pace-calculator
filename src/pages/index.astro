@@ -8,6 +8,10 @@ import Main from "../components/Main.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="A simple pace calculator that, given two of time, distance, and pace, computes the third."
+		/>
 		<title>Pace Calculator</title>
 	</head>
 	<body>
@@ -20,6 +24,19 @@ import Main from "../components/Main.astro";
 		--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
 			Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 		--font-size: 24px;
+		--container-row-gap: 0.2em;
+		--variable-flex-direction: row;
+		--select-margin-left: 0.2em;
+	}
+
+	@media screen and (max-width: 700px) {
+		:root {
+			--font-size: 18px;
+
+			--container-row-gap: 1em;
+			--variable-flex-direction: column;
+			--select-margin-left: 0;
+		}
 	}
 
 	body {
